@@ -24,7 +24,7 @@ pipeline {
             }
         stage('Deploy App via Helm') {
             steps {
-                sh 'helm uninstall cicd'
+                // sh 'helm uninstall cicd'
                 sh 'helm upgrade --install cicd cicd'
                  
                 }

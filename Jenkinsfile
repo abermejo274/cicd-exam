@@ -6,11 +6,11 @@ pipeline {
     } 
 
     stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main', url: 'https://github.com/abermejo274/cicd-exam.git'
-            }
-        }
+        // stage('Checkout') {
+        //     steps {
+        //         git branch: 'main', url: 'https://github.com/abermejo274/cicd-exam.git'
+        //     }
+        // }
         stage('Docker Build') {
             steps {
                  sh 'docker build -t abermejo274/ci-exam-docker-image:${BUILD_NUMBER} .'
@@ -24,9 +24,7 @@ pipeline {
             }
         stage('Deploy App via Helm') {
             steps {
-                // sh 'helm uninstall cicd'
-                sh 'helm upgrade --install cicd cicd'
-                 
+                    sh 'helm upgrade --install cicd cicd'
                 }
             }
     }

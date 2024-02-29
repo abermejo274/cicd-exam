@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/abermejo274/cicd.git'
+                git branch: 'main', url: 'https://github.com/abermejo274/cicd-exam.git'
             }
         }
         stage('Docker Build') {
@@ -24,9 +24,8 @@ pipeline {
             }
         stage('Deploy App via Helm') {
             steps {
-                sh 'helm uninstall nginx-app'
-                //  sh 'helm install nginx-app cicd'
-                sh 'helm upgrade --install nginx-app cicd'
+                sh 'helm uninstall cicd'
+                sh 'helm upgrade --install cicd cicd'
                  
                 }
             }
